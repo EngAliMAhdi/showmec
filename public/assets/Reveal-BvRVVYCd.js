@@ -1,0 +1,1 @@
+import{r as e}from"./useRouter-Dpb7RwMI.js";import{t}from"./react-mcTGJ6NW.js";var n=e();function r({children:e,delay:r=0,y:i=24,className:a}){return(0,n.jsx)(t.div,{className:a,initial:{opacity:0,y:i},whileInView:{opacity:1,y:0},viewport:{once:!0,amount:.25},transition:{duration:.9,delay:r,ease:[.16,1,.3,1]},children:e})}export{r as t};
