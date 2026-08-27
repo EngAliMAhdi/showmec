@@ -2,7 +2,11 @@
     $name = trim($registration->first_name . ' ' . $registration->last_name);
     $when = $workshop['dates_labels'][$registration->workshop_date] ?? $registration->workshop_date;
     $artistAr = $workshop['artist'];
-    $artistEn = $workshop['artist_en'] ?? 'Suar Mansour';
+
+    $isArabic = preg_match('/\p{Arabic}/u', $name) === 1;
+    $nameStyle = $isArabic
+        ? "color:#000000;font-family:'Amiri','Noto Naskh Arabic','Noto Sans Arabic',Tahoma,Arial,sans-serif;"
+        : "color:#6b4f38;font-family:'Dancing Script','Parisienne','Great Vibes',cursive;";
 
     $rows = [
         ['DATE — التاريخ', $when],
@@ -43,13 +47,7 @@
               <div style="margin:44px auto 0;width:36px;border-top:1px solid #e2dad0;"></div>
 
               <div dir="ltr" style="margin-top:38px;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#b0a698;font-family:'Manrope',Helvetica,Arial,sans-serif;">Invitation</div>
-              <h1 style="margin:18px 0 0;font-size:46px;line-height:1.2;font-weight:400;letter-spacing:0.5px;color:#2f2a25;font-family:'Amiri','Noto Naskh Arabic','Noto Sans Arabic',Tahoma,Arial,sans-serif;">{{ $name }}</h1>
-
-              <div style="margin:18px auto 0;max-width:380px;text-align:center;">
-                <div dir="rtl" style="font-size:24px;line-height:1.4;color:#6b4f38;font-family:'Amiri','Noto Naskh Arabic','Noto Sans Arabic',Tahoma,Arial,sans-serif;">{{ $artistAr }}</div>
-                <div dir="ltr" style="font-size:28px;line-height:1.35;font-weight:400;color:#6b4f38;font-family:'Dancing Script','Parisienne','Great Vibes',cursive;">{{ $artistEn }}</div>
-                <div dir="ltr" style="margin-top:4px;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#b0a698;font-family:'Manrope',Helvetica,Arial,sans-serif;">with love, {{ $artistEn }}</div>
-              </div>
+              <h1 style="margin:18px 0 0;font-size:46px;line-height:1.2;font-weight:400;letter-spacing:0.5px;{!! $nameStyle !!}">{{ $name }}</h1>
 
               <p style="margin:24px auto 0;max-width:380px;font-size:15px;line-height:2;color:#7b7166;font-family:'Amiri','Noto Naskh Arabic','Noto Sans Arabic',Tahoma,Arial,sans-serif;">
                 مكانك محجوز. استلمنا العربون وثبّتنا اسمك بورشة المكياج مع {{ $artistAr }}.
