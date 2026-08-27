@@ -19,8 +19,10 @@ class WorkshopInvitation extends Mailable
 
     public function envelope(): Envelope
     {
+        $name = trim($this->registration->first_name.' '.$this->registration->last_name);
+
         return new Envelope(
-            subject: 'دعوة ورشة المكياج — INGLOT Sally Qadry',
+            subject: 'دعوتك لورشة المكياج — '.$name,
         );
     }
 

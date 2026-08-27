@@ -2,6 +2,7 @@
 
 return [
     'artist' => 'سوار منصور',
+    'artist_en' => 'Suar Mansour',
     'place' => 'INGLOT Sally Qadry — شفاعمرو، حيّ عصمان',
     'seats' => 10,
     'deposit' => 200,
