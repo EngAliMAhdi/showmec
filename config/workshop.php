@@ -6,6 +6,7 @@ return [
     'seats' => 10,
     'deposit' => 200,
     'cancellation_days' => 3,
+    'time' => '10:00 - 14:00',
     'dates' => [
         '2026-09-11',
         '2026-09-13',

@@ -30,6 +30,7 @@ class WorkshopInvitation extends Mailable
             view: 'emails.workshop-invitation',
             with: [
                 'workshop' => config('workshop'),
+                'base' => rtrim((string) config('app.url'), '/'),
             ],
         );
     }

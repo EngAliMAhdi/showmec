@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Mail\WorkshopInvitation;
 use App\Models\Registration;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Throwable;
 
@@ -39,6 +40,12 @@ class InvitationService
                 'error' => null,
             ];
         } catch (Throwable $e) {
+            Log::error('Invitation email failed', [
+                'registration_id' => $registration->id,
+                'email' => $registration->email,
+                'error' => $e->getMessage(),
+            ]);
+
             $attempts = $registration->invitation_attempts + 1;
             $final = $attempts >= self::MAX_ATTEMPTS;
             $nextRetryAt = $final ? null : now()->addMinutes(5 * (2 ** min($attempts, 6)));
