@@ -33,7 +33,7 @@ class WorkshopService
         $taken = Registration::query()
             ->where('workshop_date', $workshopDate)
             ->whereNull('cancelled_at')
-            ->whereIn('payment_status', ['pending', 'paid'])
+            ->where('payment_status', 'paid')
             ->count();
 
         return max(0, $this->seats() - $taken);
