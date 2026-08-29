@@ -21,6 +21,10 @@ return Application::configure(basePath: dirname(__DIR__))
             'payment-success',
             'payment-fail',
         ]);
+
+        $middleware->api(append: [
+            \App\Http\Middleware\NoCache::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
